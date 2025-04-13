@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Order Tracking</title>
+</head>
+<body>
+  <h1>Real-time Order Status</h1>
+  <div id="status">Waiting for updates...</div>
+
+  <script src="https://cdn.socket.io/4.5.4/socket.io.min.js"></script>
+  <script>
+    const socket = io("http://localhost:3000");
+
+    socket.on("orderStatusUpdate", (data) => {
+      document.getElementById("status").innerText = "Order Status: " + data.status;
+    });
+  </script>
+</body>
+</html>
